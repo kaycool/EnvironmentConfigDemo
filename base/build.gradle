@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+
+        buildConfigField "String", "CONFIG_TEXT_01", "${gradle.CONFIG_TEXT_01}"
+        buildConfigField "String", "CONFIG_TEXT_02", "${gradle.CONFIG_TEXT_02}"
+        buildConfigField "String", "CONFIG_TEXT_03", "${gradle.CONFIG_TEXT_03}"
+        buildConfigField "String", "CONFIG_TEXT_04", "${gradle.CONFIG_TEXT_04}"
+        buildConfigField "String", "CONFIG_TEXT_05", "${gradle.CONFIG_TEXT_05}"
+        buildConfigField "boolean", "CONFIG_TEXT_06", "${gradle.CONFIG_TEXT_06}"
+        buildConfigField "String", "CONFIG_TEXT_07", "${gradle.CONFIG_TEXT_01}"
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    testCompile 'junit:junit:4.12'
+}
+
+//打印 配置环境参数的值
+task printDevelopModeMessage << {
+    println gradle.CONFIG_TEXT_01
+    println gradle.CONFIG_TEXT_02
+    println gradle.CONFIG_TEXT_03
+    println gradle.CONFIG_TEXT_04
+    println gradle.CONFIG_TEXT_05
+    println gradle.CONFIG_TEXT_06
+    println gradle.CONFIG_TEXT_07
+}

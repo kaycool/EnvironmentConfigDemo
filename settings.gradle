@@ -1,0 +1,49 @@
+//代码引用属性的字符串处理方式
+static def dealCodeProperties(Properties properties, String property) {
+    return "\"${properties.getProperty(property)}\""
+}
+
+//build.gradle中通过manifestPlaceHolder代码块注入属性的处理方式(JPushKey)
+static def dealManifestProperties(Properties properties, String property) {
+    return "${properties.getProperty(property)}"
+}
+
+//属性的boolean值得处理方式
+static def dealPropertiesToBool(Properties properties, String property) {
+    return properties.getProperty(property).toBoolean()
+}
+
+def initConfig() {
+    def isReleaseMode = IS_RELEASE_MODE.toBoolean()
+    if (isReleaseMode) {
+        println "目前是发布模式"
+    } else {
+        println "目前是开发模式"
+    }
+
+    Properties properties = new Properties()
+    String fileName = isReleaseMode ? "/release.properties" : "/debug.properties"
+    File propertyFile = new File(rootDir.getAbsolutePath(), fileName)
+    properties.load(propertyFile.newDataInputStream())
+
+    gradle.ext.CONFIG_TEXT_01 = dealCodeProperties(properties, "CONFIG_TEXT_01")
+    gradle.ext.CONFIG_TEXT_02 = dealCodeProperties(properties, "CONFIG_TEXT_02")
+    gradle.ext.CONFIG_TEXT_03 = dealCodeProperties(properties, "CONFIG_TEXT_03")
+    gradle.ext.CONFIG_TEXT_04 = dealCodeProperties(properties, "CONFIG_TEXT_04")
+    gradle.ext.CONFIG_TEXT_05 = dealCodeProperties(properties, "CONFIG_TEXT_05")
+    gradle.ext.CONFIG_TEXT_06 = dealPropertiesToBool(properties, "CONFIG_TEXT_06")
+    gradle.ext.CONFIG_TEXT_07 = dealCodeProperties(properties, "CONFIG_TEXT_07")
+
+    //已在base的build.gradle文件中定义了printDevelopModeMessage 打印这些值的信息
+    println gradle.CONFIG_TEXT_01
+    println gradle.CONFIG_TEXT_02
+    println gradle.CONFIG_TEXT_03
+    println gradle.CONFIG_TEXT_04
+    println gradle.CONFIG_TEXT_05
+    println gradle.CONFIG_TEXT_06
+    println gradle.CONFIG_TEXT_07
+}
+
+initConfig()
+
+include ':app', ':base'
