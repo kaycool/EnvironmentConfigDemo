@@ -1,0 +1,38 @@
+// app version
+ext.versions = [
+        minSdkVersion    : 19,
+        targetSdkVersion : 27,
+        compileSdkVersion: 27,
+        buildToolsVersion: "28.0.3",
+        androidSupport   : "27.1.1",
+        bugly            : "2.6.6.1",
+        eventbus         : "3.1.1",
+        arch             : "1.1.1",
+        rxjava2          : "2.2.3",
+        rxandroid        : "2.1.0",
+        rxkotlin         : "2.3.0"
+]
+
+ext.debug = [
+        versionCode          : 1,
+        versionName          : "1",
+        SIMPLE_CONFIG_TEXT_01: "10000001",
+        SIMPLE_CONFIG_TEXT_02: "10000001",
+        SIMPLE_CONFIG_TEXT_03: "10000001",
+        SIMPLE_CONFIG_TEXT_04: "10000001",
+        SIMPLE_CONFIG_TEXT_05: "10000001",
+        SIMPLE_CONFIG_TEXT_06: false,
+        SIMPLE_CONFIG_TEXT_07: "10000001",
+]
+
+ext.release = [
+        versionCode          : 2,
+        versionName          : "2",
+        SIMPLE_CONFIG_TEXT_01: "20000001",
+        SIMPLE_CONFIG_TEXT_02: "20000001",
+        SIMPLE_CONFIG_TEXT_03: "20000001",
+        SIMPLE_CONFIG_TEXT_04: "20000001",
+        SIMPLE_CONFIG_TEXT_05: "20000001",
+        SIMPLE_CONFIG_TEXT_06: true,
+        SIMPLE_CONFIG_TEXT_07: "20000001",
+]

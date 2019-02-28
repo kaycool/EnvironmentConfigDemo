@@ -14,6 +14,36 @@ android {
         //manifestPlaceholders = []
     }
 
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            versionCode debug.versionCode
+            versionName debug.versionName
+
+            buildConfigField "String", "SIMPLE_CONFIG_TEXT_01", "\"${debug.SIMPLE_CONFIG_TEXT_01}\""
+            buildConfigField "String", "SIMPLE_CONFIG_TEXT_02", "\"${debug.SIMPLE_CONFIG_TEXT_02}\""
+            buildConfigField "String", "SIMPLE_CONFIG_TEXT_03", "\"${debug.SIMPLE_CONFIG_TEXT_03}\""
+            buildConfigField "String", "SIMPLE_CONFIG_TEXT_04", "\"${debug.SIMPLE_CONFIG_TEXT_04}\""
+            buildConfigField "String", "SIMPLE_CONFIG_TEXT_05", "\"${debug.SIMPLE_CONFIG_TEXT_05}\""
+//            buildConfigField "boolean", "SIMPLE_CONFIG_TEXT_06", debug.SIMPLE_CONFIG_TEXT_06
+
+            manifestPlaceholders.put("SIMPLE_CONFIG_TEXT_07", debug.SIMPLE_CONFIG_TEXT_07)
+        }
+        publish {
+            versionCode release.versionCode
+            versionName release.versionName
+
+            buildConfigField "String", "SIMPLE_CONFIG_TEXT_01", "\"${release.SIMPLE_CONFIG_TEXT_01}\""
+            buildConfigField "String", "SIMPLE_CONFIG_TEXT_02", "\"${release.SIMPLE_CONFIG_TEXT_02}\""
+            buildConfigField "String", "SIMPLE_CONFIG_TEXT_03", "\"${release.SIMPLE_CONFIG_TEXT_03}\""
+            buildConfigField "String", "SIMPLE_CONFIG_TEXT_04", "\"${release.SIMPLE_CONFIG_TEXT_04}\""
+            buildConfigField "String", "SIMPLE_CONFIG_TEXT_05", "\"${release.SIMPLE_CONFIG_TEXT_05}\""
+//            buildConfigField "boolean", "SIMPLE_CONFIG_TEXT_06", debug.SIMPLE_CONFIG_TEXT_06
+
+            manifestPlaceholders.put("SIMPLE_CONFIG_TEXT_07", debug.SIMPLE_CONFIG_TEXT_07)
+        }
+    }
+
 }
 
 dependencies {
